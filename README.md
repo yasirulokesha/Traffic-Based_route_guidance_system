@@ -9,7 +9,7 @@ Team ID: Group 3
 This project implements a **Traffic-Based Route Guidance System (TBRGS)** that uses machine learning models to forecast traffic volumes and estimate optimal travel paths through the City of Boroondara. By combining predictive modeling with graph search algorithms, the system dynamically guides users through the most efficient routes based on expected traffic conditions.
 
 This system builds upon the foundational work from Assignment 2A and extends it with:
-- Multiple time-series machine learning models (LSTM, GRU, and a third model)
+- Multiple time-series machine learning models (LSTM, GRU, and a simple RNN)
 - Dynamic prediction of future traffic volume
 - Travel time estimation based on predicted traffic
 - A top-k shortest path route finder
@@ -20,56 +20,54 @@ This system builds upon the foundational work from Assignment 2A and extends it 
 ## 📁 Project Structure
 
 ```
-TBRGS/
-├── data/
-│   ├── raw/
-│   │   └── boroondara_oct2006.csv
-│   ├── processed/
-│   │   └── traffic_processed.csv
-│   └── external/                    # Any additional datasets (if used in research)
+IntroToAI-Assignment-2B/
 │
-├── notebooks/                      # For Jupyter notebooks (data exploration, testing models)
-│   ├── EDA.ipynb                   # Exploratory Data Analysis
-│   ├── LSTM_Model.ipynb
-│   ├── GRU_Model.ipynb
-│   └── Other_Model.ipynb     ,     # 3rd ML model (e.g., Random Forest, ARIMA, Transformer)
+├── DataSet/
+├── Resources/
 │
-├── models/                         # Trained models and training scripts
-│   ├── lstm_model.py
-│   ├── gru_model.py c
-│   ├── other_model.py
-│   └── saved_models/
-│       ├── lstm.pth
-│       ├── gru.pth
-│       └── other_model.pkl
+├── TBRGS/
+│   ├── data/
+│   ├── notebooks/
+│   └── src/
+│       ├── algorithms/
+│       │   └── yens_algorithm.py
+│       │
+│       ├── gui/
+│       │   ├── route_maps/
+│       │   ├── dashboard.py
+│       │   ├── loading_gif.gif
+│       │   ├── map.jpg
+│       │   └── route_generator.py
+│       │
+│       ├── models/
+│       │   ├── GRU_model/
+│       │   │   ├── models/
+│       │   │   └── scalers/
+│       │   │
+│       │   ├── LSTM_model/
+│       │   │   ├── models/
+│       │   │   └── scalers/
+│       │   │
+│       │   |── RNN_model/
+│       │   |   ├── models/
+│       │   |   └── scalers/
+|       |   ├── GRU_model.py
+│       │   ├── LSTM_model.py
+│       │   └── RNN_model.py
+│       │
+│       ├── data_processing.py
+│       ├── graph.py
+│       ├── main.py
+│       └── travel_time_estimator.py
 │
-├── src/                            # Core application logic
-│   ├── __init__.py
-│   ├── data_processing.py         # Clean, normalize, and prepare data
-│   ├── prediction_engine.py       # Load models and predict future traffic volumes
-│   ├── travel_time_estimator.py   # Convert volume to travel time
-│   ├── route_finder.py            # Search top-k paths using graph search
-│   └── config.py                  # Default parameters/settings
+├── tests/
+│   ├── test_graph.py
+│   └── test_main.py
 │
-├── gui/                            # User interface
-│   ├── main_gui.py                # Entry point for GUI
-│   └── gui_utils.py               # GUI logic helpers (tkinter, PyQt, etc.)
-│
-├── tests/                          # Automated or manual test cases
-│   ├── test_data_processing.py
-│   ├── test_model_prediction.py
-│   ├── test_travel_time_estimator.py
-│   └── test_route_finder.py
-│
-├── report/
-│   ├── TeamID.pdf                 # Final report
-│   └── figures/                   # Graphs, model comparisons, results screenshots
-│
-├── config.json                    # JSON for storing user/default configs
-├── README.md                      # Project overview, how to run the system
-├── requirements.txt               # Python dependencies
-└── run.py                         # Main entry script for running the entire system
-
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
 ```
 
 ---
@@ -114,7 +112,6 @@ Each model was trained on traffic volume data recorded from sensors across Boroo
 ### Step 1: Clone the Repository
 ```bash
 git clone 
-cd TBRGS
 ```
 
 ### Step 2: Install Dependencies
@@ -126,7 +123,7 @@ pip install -r requirements.txt
 
 ### Step 3: Launch the App
 ```bash
-python run.py
+python TBRGS/src/main.py
 ```
 
 This will open the GUI for route prediction and display.
@@ -137,14 +134,14 @@ This will open the GUI for route prediction and display.
 
 To run all unit and integration tests:
 ```bash
-pytest tests/
+python -m unittest discover -s tests
 ```
 
 ---
 
 ## 📷 Sample Screenshots
 
-> Add screenshots of:
+> - Add screenshots of:
 > - Traffic volume prediction graph
 > - Route visualization with top-k paths
 > - GUI home screen
@@ -163,7 +160,7 @@ pytest tests/
 ## 📄 Final Report
 
 All technical documentation, architecture diagrams, and evaluation metrics are available in:  
-📁 `report/TeamID_Report.pdf`
+📁 `Main Report.pdf`
 
 ---
 
@@ -171,7 +168,7 @@ All technical documentation, architecture diagrams, and evaluation metrics are a
 
 - The dataset used is **City of Boroondara – Traffic Sensor Data (October 2006)**.
 - The prediction models rely solely on the provided historical data without external sources.
-- GUI developed using [Tkinter / PyQt] – supports real-time input and route display.
+- GUI developed using [Tkinter / Matplotlib / Networkx] – supports real-time input and route display.
 - Graph-based pathfinding uses NetworkX.
 
 ---
