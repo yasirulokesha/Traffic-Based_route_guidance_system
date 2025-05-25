@@ -6,6 +6,9 @@ import tensorflow as tf
 from datetime import datetime, timedelta
 from sklearn.preprocessing import MinMaxScaler
 
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
 # Custom function
 def replace_outliers_iqr(df, column):
     Q1 = df[column].quantile(0.25)
@@ -29,6 +32,17 @@ def lstm_prediction_engine(data_set, site_id, target_time):
     # Calculate number of 15-min steps from last known timestamp
     last_known_time = data_set["timestamp"].max()
     last_known_time = pd.to_datetime(last_known_time)
+    
+    # Check for empty dataset
+    if data_set.empty or data_set['timestamp'].isnull().all():
+        print(f"❌ Dataset is empty or timestamp column has all nulls for site {site_id}")
+        return None
+
+    # Get last known timestamp
+    last_known_time = pd.to_datetime(data_set["timestamp"].max())
+    if pd.isna(target_time) or pd.isna(last_known_time):
+        print(f"❌ Invalid target_time ({target_time}) or last_known_time ({last_known_time})")
+        return None
     
     delta = target_time - last_known_time
     
@@ -97,7 +111,8 @@ def lstm_prediction_engine(data_set, site_id, target_time):
             print('Inverse transforming predictions...')
             # Inverse transform the predictions
             predicted_volumes = scaler.inverse_transform(np.array(predictions_scaled).reshape(-1, 1))
-            predicted_value = predicted_volumes[-1][0]
+            predicted_value = float(predicted_volumes[-1, 0])  # Ensures scalar float extraction
+
         except Exception as e:
             print('Inverse transformation failed. Please check the scaler and try again.')
             print("❌ An error occurred:", e)

@@ -1,3 +1,9 @@
+import sys
+import os
+
+# Add TBRGS/src to sys.path so "models" can be found as a top-level package
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+
 import pandas as pd
 import numpy as np
 # from data_processing import process_scats_data

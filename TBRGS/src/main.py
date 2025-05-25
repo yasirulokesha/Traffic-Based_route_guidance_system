@@ -4,6 +4,8 @@ from data_processing import process_scats_data
 import tkinter as tk
 from gui.dashboard import TBRGSApp
 
+import time
+
 REQUIRED_PYTHON_VERSION = (3, 11, 11)
 current_version = sys.version_info[:3]
 
@@ -13,7 +15,14 @@ def show_splash():
     splash.configure(bg="white")
 
     width, height = 400, 300
-    splash.geometry(f"{width}x{height}")
+        
+    # Calculate center position
+    screen_width = splash.winfo_screenwidth()
+    screen_height = splash.winfo_screenheight()
+    x = (screen_width // 2) - (width // 2)
+    y = (screen_height // 2) - (height // 2)
+
+    splash.geometry(f"{width}x{height}+{x}+{y}")
 
     # Optional: add a loading message or GIF
     label = tk.Label(splash, text="Loading nodes and edges...", font=("Helvetica", 14), bg="white", fg="black", highlightthickness=0)
@@ -35,7 +44,9 @@ def main():
 
     splash = show_splash()
     root.update()
-
+    
+    time.sleep(3)  # Simulate loading time, can be removed later
+    
     # Make the main graph object
     SCATS_Graph = process_scats_data()
 

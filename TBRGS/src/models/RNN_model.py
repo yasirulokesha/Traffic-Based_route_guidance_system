@@ -98,7 +98,7 @@ def rnn_prediction_engine(data_set, site_id, target_time):
             print('Inverse transforming predictions...')
             # Inverse transform the predictions
             predicted_volumes = scaler.inverse_transform(np.array(predictions_scaled).reshape(-1, 1))
-            predicted_value = predicted_volumes[-1][0]
+            predicted_value = float(predicted_volumes[-1, 0].item())
         except Exception as e:
             print('Inverse transformation failed. Please check the scaler and try again.')
             print("❌ An error occurred:", e)

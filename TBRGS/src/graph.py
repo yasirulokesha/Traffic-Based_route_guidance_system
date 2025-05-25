@@ -2,8 +2,6 @@
 # -------------------------------------------------------
 
 print("Loading graph.py...")
-import pandas as pd
-import numpy as np
 from geopy.distance import geodesic
 
 # The SCATS Site Node class
@@ -18,7 +16,6 @@ class SCATSNode:
         
     def add_neighbor(self, neighbor_node):
         if(len(self.neighbors) >= 5):
-            print(f"Node {self.id} already has 4 neighbors.")
             return
         else:
             self.neighbors.append(neighbor_node)
@@ -50,7 +47,7 @@ class RoadGraph:
         if node.id not in self.nodes:
             self.nodes[node.id] = node
         else:
-            print(f"Node {node.id} already exists.")
+            return
             
     # Add a directed edge to the graph
     def add_edge(self, from_node, to_node, time_cost):

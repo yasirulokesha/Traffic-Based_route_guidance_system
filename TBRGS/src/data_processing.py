@@ -1,15 +1,7 @@
 import pandas as pd
-import numpy as np
 
 from travel_time_estimator import calculate_travel_time
 from graph import RoadGraph, SCATSNode
-
-class SearchObject:
-    def __init__(self, graph, origin_id, destination_id, timestamp):
-        self.graph = graph
-        self.origin = origin_id
-        self.destination = destination_id
-        self.timestamp = timestamp
         
 class EdgeClass:
     def __init__(self, from_node, to_node, time_cost):
