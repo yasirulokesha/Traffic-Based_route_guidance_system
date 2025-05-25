@@ -155,8 +155,8 @@ pytest tests/
 
 - Yasiru Lokesha  
 - Prawud Rathnayake 
-- 
-- 
+- Alex Vrsecky
+- Justin Tran
 
 ---
 
