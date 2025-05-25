@@ -1,6 +1,5 @@
 import unittest
-import numpy as np
-from .test_graph import TestSCATSGraph
+from test_graph import TestSCATSGraph
 from TBRGS.src.models.LSTM_model import LSTM_prediction
 from TBRGS.src.models.GRU_model import GRU_prediction
 from TBRGS.src.models.RNN_model import RNN_prediction
@@ -46,5 +45,5 @@ class TestTimeEstimate(unittest.TestCase):
         self.assertTrue(float(travel_time) > 0, "❌ Travel time must be positive")
         print(f"✅ UT-11: Travel time estimation passed with {travel_time} minutes.")
 
-if __name__ == "__main__":
-    unittest.main(verbosity=0)  # Run all tests in the TestSCATSGraph class
+# if __name__ == "__main__":
+#     unittest.main(verbosity=0)  # Run all tests in the TestSCATSGraph class
