@@ -1,7 +1,6 @@
 import unittest
 import numpy as np
 from .test_graph import TestSCATSGraph
-# from TBRGS.tests.test_travel_time_estimation import TestTravelTime
 from TBRGS.src.models.LSTM_model import LSTM_prediction
 from TBRGS.src.models.GRU_model import GRU_prediction
 from TBRGS.src.models.RNN_model import RNN_prediction
@@ -16,7 +15,7 @@ class TestLSTMModel(unittest.TestCase):
         timestamp = "2006-11-01 00:00"  # Example timestamp
         prediction = LSTM_prediction(site_id, timestamp)
         self.assertIsInstance(prediction, float, "❌ LSTM prediction is not a float32")
-        print("✅ UT-03: LSTM prediction in [0, 1] passed.")
+        print("✅ UT-08: LSTM prediction in [0, 1] passed.")
 
 class TestGRUModel(unittest.TestCase):
     def test_gru_prediction_output(self):
@@ -24,7 +23,7 @@ class TestGRUModel(unittest.TestCase):
         timestamp = "2006-11-01 00:00"  # Example timestamp
         prediction = GRU_prediction(site_id, timestamp)
         self.assertIsInstance(prediction, float, "❌ GRU prediction is not a float32")
-        print("✅ UT-03: GRU prediction in [0, 1] passed.")
+        print("✅ UT-09: GRU prediction in [0, 1] passed.")
         
 class TestRNNModel(unittest.TestCase):
     def test_rnn_prediction_output(self):
@@ -32,7 +31,7 @@ class TestRNNModel(unittest.TestCase):
         timestamp = "2006-11-01 00:00"  # Example timestamp
         prediction = RNN_prediction(site_id, timestamp)
         self.assertIsInstance(prediction, float, "❌ RNN prediction is not a float32")
-        print("✅ UT-03: RNN prediction in [0, 1] passed.")
+        print("✅ UT-10: RNN prediction in [0, 1] passed.")
         
 class TestTimeEstimate(unittest.TestCase):
     def test_travel_time_estimation(self):
@@ -45,10 +44,7 @@ class TestTimeEstimate(unittest.TestCase):
         travel_time = calculate_travel_time(graph, origin_id, destination_id, timestamp, model="lstm")
         self.assertIsNotNone(travel_time, "❌ Travel time estimation returned None")
         self.assertTrue(float(travel_time) > 0, "❌ Travel time must be positive")
-        print(f"✅ UT-04: Travel time estimation passed with {travel_time} minutes.")
+        print(f"✅ UT-11: Travel time estimation passed with {travel_time} minutes.")
 
 if __name__ == "__main__":
-    # graph_test = TestSCATSGraph()  
-    # time_estimation_test = TestTravelTime()
-    
     unittest.main(verbosity=0)  # Run all tests in the TestSCATSGraph class
