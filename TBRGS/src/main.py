@@ -1,8 +1,5 @@
 import sys
-
-from gui.route_generator import plot_route_map
-from algorithms.yens_algorithm import find_k_shortest_routes
-from data_processing import process_scats_data, process_scats_edges
+from data_processing import process_scats_data
 
 import tkinter as tk
 from gui.dashboard import TBRGSApp

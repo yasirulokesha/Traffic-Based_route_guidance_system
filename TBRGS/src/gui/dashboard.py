@@ -2,7 +2,6 @@ import pandas as pd
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk, ImageDraw, ImageSequence
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import customtkinter
 import threading
 
@@ -16,7 +15,7 @@ class TBRGSApp:
 
         self.loading = False
         self.searched = False
-        self.photo = None  # image holder
+        self.photo = None  
 
         self.init_variables()
         self.build_gui()
@@ -134,7 +133,7 @@ class TBRGSApp:
                 self.photos.append(photo)
 
                 label = tk.Label(self.right_frame, image=photo, bg="white", bd=0)
-                label.pack(padx=10, pady=10)  # ✅ FIXED: no expand=True
+                label.pack(padx=10, pady=10)  
         
     def show_image_panel(self):
         self.loading = True
@@ -173,7 +172,7 @@ class TBRGSApp:
             bg="white",
             fg="black",
             font=("Modern", 13),
-            wraplength=400,  # Set a width for wrapping
+            wraplength=400, 
             justify="left",     
             anchor="w",
             padx=20,
@@ -186,7 +185,7 @@ class TBRGSApp:
             bg="white",
             fg="black",
             font=("Modern", 13),
-            wraplength=400,  # Set a width for wrapping
+            wraplength=400,  
             justify="left",     
             anchor="w",
             padx=20,
@@ -199,7 +198,7 @@ class TBRGSApp:
             bg="white",
             fg="black",
             font=("Modern", 13),
-            wraplength=400,  # Set a width for wrapping
+            wraplength=400,  
             justify="left",     
             anchor="w",
             padx=20,
@@ -212,7 +211,7 @@ class TBRGSApp:
             bg="white",
             fg="black",
             font=("Modern", 13),
-            wraplength=400,  # Set a width for wrapping
+            wraplength=400, 
             justify="left",     
             anchor="w",
             padx=20,
@@ -225,7 +224,7 @@ class TBRGSApp:
             bg="white",
             fg="black",
             font=("Modern", 13),
-            wraplength=400,  # Set a width for wrapping
+            wraplength=400,  
             justify="left",     
             anchor="w",
             padx=20,
@@ -238,14 +237,14 @@ class TBRGSApp:
             bg="white",
             fg="black",
             font=("Modern", 13),
-            wraplength=400,  # Set a width for wrapping
+            wraplength=400,  
             justify="left",     
             anchor="w",
             padx=20,
             pady=0
         ).pack(padx=20, pady=1, anchor="w")
             
-        # ✅ Enable mousewheel / touchpad scroll gestures
+        # Enable mousewheel / touchpad scroll gestures
         def _on_mousewheel(event):
             if event.num == 4 or event.delta > 0:
                 canvas.yview_scroll(-1, "units")
