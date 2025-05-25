@@ -144,7 +144,7 @@ python -m unittest discover -s tests
 > - SCATS map sample
 ![Map Image](TBRGS/src/gui/map.jpg)
 > - Route visualization with top-k paths
-![Map Image](samples/route.png)
+![Map Image](samples/routes.png)
 > - GUI home screen
 ![Map Image](samples/main.png)
 
