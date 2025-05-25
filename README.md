@@ -22,52 +22,54 @@ This system builds upon the foundational work from Assignment 2A and extends it 
 ```
 IntroToAI-Assignment-2B/
 │
-├── DataSet/
-├── Resources/
+├── DataSet/                          # 📂 Raw and/or processed SCATS traffic data
+├── Resources/                        # 📂 Project resources like images, diagrams, or documentation
 │
-├── TBRGS/
-│   ├── data/
-│   ├── notebooks/
-│   └── src/
+├── TBRGS/                            # 📂 Main application package
+│   ├── data/                         # 📂 Data used or generated internally
+│   ├── notebooks/                    # 📂 Jupyter notebooks for experiments or analysis
+│   └── src/                          # 📂 Source code
 │       ├── algorithms/
-│       │   └── yens_algorithm.py
+│       │   └── yens_algorithm.py     # 🔁 Yen’s algorithm implementation for k-shortest paths
 │       │
 │       ├── gui/
-│       │   ├── route_maps/
-│       │   ├── dashboard.py
-│       │   ├── loading_gif.gif
-│       │   ├── map.jpg
-│       │   └── route_generator.py
+│       │   ├── route_maps/           # 🗺️ Saved route map visualizations for cache
+│       │   ├── dashboard.py          # 🖥️ Main dashboard UI logic (likely for traffic insights)
+│       │   ├── loading_gif.gif       # 🔄 Animated loading graphic
+│       │   ├── map.jpg               # 🗺️ Background or route map image
+│       │   └── route_generator.py    # 📍 Route creation logic for pathfinding
 │       │
 │       ├── models/
 │       │   ├── GRU_model/
-│       │   │   ├── models/
-│       │   │   └── scalers/
+│       │   │   ├── models/           # 🤖 Saved GRU model files (.keras)
+│       │   │   └── scalers/          # 📊 Scalers used to normalize GRU model input/output
 │       │   │
 │       │   ├── LSTM_model/
-│       │   │   ├── models/
-│       │   │   └── scalers/
+│       │   │   ├── models/           # 🤖 Saved LSTM model files (.keras)
+│       │   │   └── scalers/          # 📊 Scalers used to normalize LSTM model input/output
 │       │   │
-│       │   |── RNN_model/
-│       │   |   ├── models/
-│       │   |   └── scalers/
-|       |   ├── GRU_model.py
-│       │   ├── LSTM_model.py
-│       │   └── RNN_model.py
+│       │   ├── RNN_model/
+│       │   │   ├── models/           # 🤖 Saved RNN model files (.keras)
+│       │   │   └── scalers/          # 📊 Scalers used to normalize RNN model input/output
+│       │   │
+│       │   ├── GRU_model.py          # 🧠 GRU model prediction logic
+│       │   ├── LSTM_model.py         # 🧠 LSTM model prediction logic
+│       │   └── RNN_model.py          # 🧠 RNN model prediction logic
 │       │
-│       ├── data_processing.py
-│       ├── graph.py
-│       ├── main.py
-│       └── travel_time_estimator.py
+│       ├── data_processing.py        # 🧹 SCATS data preprocessing (cleaning, transforming)
+│       ├── graph.py                  # 🕸️ Graph construction from SCATS intersections
+│       ├── main.py                   # 🚦 Main entry point or integration script
+│       └── travel_time_estimator.py  # ⏱️ Travel time calculation logic using ML models
 │
 ├── tests/
-│   ├── test_graph.py
-│   └── test_main.py
+│   ├── test_graph.py                 # ✅ Unit tests for graph construction
+│   └── test_main.py                  # ✅ Unit tests for ML models and travel time estimation
 │
-├── .gitignore
-├── LICENSE
-├── README.md
-└── requirements.txt
+├── .gitignore                        # 🙈 Files and folders to exclude from Git
+├── LICENSE                           # 📄 Project license
+├── README.md                         # 📘 Project overview, setup, usage instructions
+└── requirements.txt                  # 📦 Python dependencies list
+
 ```
 
 ---
