@@ -7,6 +7,7 @@ from gui.dashboard import TBRGSApp
 import time
 
 REQUIRED_PYTHON_VERSION = (3, 11, 11)
+MINMUM_PYTHON_VERSION = (3, 10, 0)
 current_version = sys.version_info[:3]
 
 def show_splash():
@@ -31,7 +32,7 @@ def show_splash():
     return splash
 
 def main():
-    if current_version != REQUIRED_PYTHON_VERSION:
+    if current_version > MINMUM_PYTHON_VERSION  and current_version != REQUIRED_PYTHON_VERSION:
         print("❌ This program requires Python 3.11.11")
         print(f"You are using Python {'.'.join(map(str, current_version))}")
         sys.exit(1)
