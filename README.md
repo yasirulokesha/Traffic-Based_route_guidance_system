@@ -1,9 +1,6 @@
 
 # Traffic-Based Route Guidance System (TBRGS)
 
-**COS30019 – Intelligent Systems Assignment 2B**  
-Team ID: Group 3
-
 ## 🧠 Project Overview
 
 This project implements a **Traffic-Based Route Guidance System (TBRGS)** that uses machine learning models to forecast traffic volumes and estimate optimal travel paths through the City of Boroondara. By combining predictive modeling with graph search algorithms, the system dynamically guides users through the most efficient routes based on expected traffic conditions.
