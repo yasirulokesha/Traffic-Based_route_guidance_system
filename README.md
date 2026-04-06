@@ -152,15 +152,6 @@ python -m unittest discover -s tests
 
 ---
 
-## 👨‍💻 Team Members
-
-- Yasiru Lokesha  
-- Prawud Rathnayake 
-- Alex Vrsecky
-- Justin Tran
-
----
-
 ## 📄 Final Report
 
 All technical documentation, architecture diagrams, and evaluation metrics are available in:  
